@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginAndRegistrationVC: UIViewController {
     
@@ -35,6 +36,15 @@ class LoginAndRegistrationVC: UIViewController {
     
     private func registerUser() {
         
+//        Firebase authentication
+        
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
+            if error != nil { print(error!.localizedDescription )} else {
+                print("Registration Sucessful")
+                self.performSegue(withIdentifier: "startChatting", sender: self)
+            }
+        }
+        
     }
     
     private func loginUser() {
@@ -46,7 +56,7 @@ class LoginAndRegistrationVC: UIViewController {
     }
     
     @IBAction func goBack(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }

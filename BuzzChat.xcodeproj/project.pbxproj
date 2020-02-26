@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0269442224059B5100F7E13F /* LoginAndRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269442124059B5100F7E13F /* LoginAndRegistrationVC.swift */; };
+		026944262406D1B600F7E13F /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026944252406D1B600F7E13F /* ChatVC.swift */; };
 		026D45782404482500BB4E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D45772404482500BB4E31 /* AppDelegate.swift */; };
 		026D457A2404482500BB4E31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D45792404482500BB4E31 /* SceneDelegate.swift */; };
 		026D457C2404482500BB4E31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D457B2404482500BB4E31 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		0269442124059B5100F7E13F /* LoginAndRegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndRegistrationVC.swift; sourceTree = "<group>"; };
+		026944252406D1B600F7E13F /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		026D45742404482500BB4E31 /* BuzzChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuzzChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		026D45772404482500BB4E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		026D45792404482500BB4E31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,9 +53,27 @@
 			children = (
 				026D45772404482500BB4E31 /* AppDelegate.swift */,
 				026D45792404482500BB4E31 /* SceneDelegate.swift */,
-				026D45822404482800BB4E31 /* LaunchScreen.storyboard */,
 			);
 			path = "Application File";
+			sourceTree = "<group>";
+		};
+		026944232406CCE900F7E13F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				026D45822404482800BB4E31 /* LaunchScreen.storyboard */,
+				026D457D2404482500BB4E31 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		026944242406CD0900F7E13F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				026D457B2404482500BB4E31 /* ViewController.swift */,
+				0269442124059B5100F7E13F /* LoginAndRegistrationVC.swift */,
+				026944252406D1B600F7E13F /* ChatVC.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		026D456B2404482500BB4E31 = {
@@ -78,12 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				0269442024059B2400F7E13F /* Application File */,
-				026D457B2404482500BB4E31 /* ViewController.swift */,
-				026D457D2404482500BB4E31 /* Main.storyboard */,
+				026944242406CD0900F7E13F /* ViewControllers */,
+				026944232406CCE900F7E13F /* Storyboards */,
 				026D45802404482800BB4E31 /* Assets.xcassets */,
 				026D45852404482800BB4E31 /* Info.plist */,
 				026D458B240449C900BB4E31 /* GoogleService-Info.plist */,
-				0269442124059B5100F7E13F /* LoginAndRegistrationVC.swift */,
 			);
 			path = BuzzChat;
 			sourceTree = "<group>";
@@ -225,6 +244,7 @@
 				026D45782404482500BB4E31 /* AppDelegate.swift in Sources */,
 				026D457A2404482500BB4E31 /* SceneDelegate.swift in Sources */,
 				0269442224059B5100F7E13F /* LoginAndRegistrationVC.swift in Sources */,
+				026944262406D1B600F7E13F /* ChatVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
