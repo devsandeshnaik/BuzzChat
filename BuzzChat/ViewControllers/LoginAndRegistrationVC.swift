@@ -18,7 +18,12 @@ class LoginAndRegistrationVC: UIViewController {
     @IBOutlet weak var emailTextField       : UITextField!
     @IBOutlet weak var passwordTextField    : UITextField!
     @IBOutlet weak var loginRegisterButton  : UIButton!
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -31,12 +36,14 @@ class LoginAndRegistrationVC: UIViewController {
             headerLabel.text = "Login"
             loginRegisterButton.setTitle("Login", for: .normal)
         }
+        
+        
     }
     
     
     private func registerUser() {
         
-//        Firebase authentication
+        //        Firebase authentication
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             if error != nil { print(error!.localizedDescription )} else {
@@ -48,7 +55,12 @@ class LoginAndRegistrationVC: UIViewController {
     }
     
     private func loginUser() {
-        
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
+            if error != nil { print(error!.localizedDescription )} else {
+            }
+            print("Login Sucessful")
+            self.performSegue(withIdentifier: "startChatting", sender: self)
+        }
     }
     
     @IBAction func loginOrRegisterUser() {
