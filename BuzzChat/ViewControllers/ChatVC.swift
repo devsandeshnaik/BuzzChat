@@ -11,16 +11,8 @@ import Firebase
 
 class ChatVC: UIViewController {
     
-    private let dummyData = [
-        ("sandesh@gmail.com","HI"),
-        ("viraj@gmail.com","HI"),
-        ("sandesh@gmail.com","How are you?"),
-        ("viraj@gmail.com","Good what about you"),
-        ("sandesh@gmail.com","am great"),
-        ("viraj@gmail.com","And whats the mpurouse if this message?"),
-        ("sandesh@gmail.com","Just Wanted to my new housewarming party on 12 May 2020 at 7 PM. I know you want decline, your presence matters a lot")
-        
-    ]
+    
+    private var chatMessages = [Message]()
     
     private var gesture: UITapGestureRecognizer!
     
@@ -49,6 +41,8 @@ class ChatVC: UIViewController {
         
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         chatsTableView.addGestureRecognizer(tapgesture)
+        
+        retriveMessages()
     }
     
    
@@ -89,19 +83,37 @@ class ChatVC: UIViewController {
             }
         }
     }
+    
+    private func retriveMessages() {
+        let messageDB = Database.database().reference().child("Messages")
+        messageDB.observe(.childAdded) { snapShot in
+            guard let snapShotValue = snapShot.value as? [String: String] else  {
+                print("Unknown snapshot value")
+                return
+            }
+            
+            let text = snapShotValue["MessageBody"]!
+            let sender = snapShotValue["Sender"]!
+            
+            let message = Message(sender: sender, messageBody: text)
+            self.chatMessages.append(message)
+            self.chatsTableView.reloadData()
+        }
+    }
 }
 
 
 extension ChatVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummyData.count
+        return chatMessages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageCell.IDENTIFIER) as? MessageCell {
             
-            messageCell.senderEmailLabel.text = dummyData[indexPath.row].0
-            messageCell.messageLabel.text = dummyData[indexPath.row].1
+            messageCell.senderEmailLabel.text = chatMessages[indexPath.row].sender
+            messageCell.messageLabel.text = chatMessages[indexPath.row].messageBody
+            messageCell.avatarImageView.image = UIImage(named: "avatar")
             return messageCell
             
         }

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class LoginAndRegistrationVC: UIViewController {
     
     
@@ -57,9 +58,9 @@ class LoginAndRegistrationVC: UIViewController {
     private func loginUser() {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             if error != nil { print(error!.localizedDescription )} else {
+                print("Login Sucessful")
+                self.performSegue(withIdentifier: "startChatting", sender: self)
             }
-            print("Login Sucessful")
-            self.performSegue(withIdentifier: "startChatting", sender: self)
         }
     }
     
