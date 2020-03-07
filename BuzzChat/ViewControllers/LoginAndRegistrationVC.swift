@@ -8,8 +8,8 @@
 
 import UIKit
 import Firebase
-
-
+import Progress
+	
 class LoginAndRegistrationVC: UIViewController {
     
     
@@ -45,10 +45,11 @@ class LoginAndRegistrationVC: UIViewController {
     private func registerUser() {
         
         //        Firebase authentication
-        
+        Prog.start(in: self.view, .activityIndicator)
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             if error != nil { print(error!.localizedDescription )} else {
                 print("Registration Sucessful")
+                Prog.end(in: self.view)
                 self.performSegue(withIdentifier: "startChatting", sender: self)
             }
         }
@@ -56,9 +57,11 @@ class LoginAndRegistrationVC: UIViewController {
     }
     
     private func loginUser() {
+        Prog.start(in: self.view, .activityIndicator)
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             if error != nil { print(error!.localizedDescription )} else {
                 print("Login Sucessful")
+                Prog.end(in: self.view)
                 self.performSegue(withIdentifier: "startChatting", sender: self)
             }
         }

@@ -26,7 +26,6 @@ class ChatVC: UIViewController {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOut(_:)))
         
-        
         chatsTableView.dataSource = self
         chatsTableView.delegate = self
         chatsTableView.rowHeight = UITableView.automaticDimension
@@ -45,7 +44,26 @@ class ChatVC: UIViewController {
         retriveMessages()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameWillChange), name: UIResponder.keyboardWillHideNotification,object: nil)
+    }
    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardFrameWillChange(_ notification: Notification) {
+        if let keybardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            UIView.animate(withDuration: 0.3) {
+                self.textFieldBottonConstraint.constant = keybardFrame.height - self.view.safeAreaInsets.bottom
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
     
     @objc private func logOut(_ sender: UIBarButtonItem) {
         do {
@@ -110,10 +128,7 @@ extension ChatVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let messageCell = tableView.dequeueReusableCell(withIdentifier: MessageCell.IDENTIFIER) as? MessageCell {
-            
-            messageCell.senderEmailLabel.text = chatMessages[indexPath.row].sender
-            messageCell.messageLabel.text = chatMessages[indexPath.row].messageBody
-            messageCell.avatarImageView.image = UIImage(named: "avatar")
+            messageCell.loadCell(with: chatMessages[indexPath.row])
             return messageCell
             
         }
@@ -135,13 +150,6 @@ extension ChatVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.3) {
-            self.textFieldBottonConstraint.constant = 265 + self.view.safeAreaInsets.bottom
-            self.view.layoutIfNeeded()
-        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buzz Chat" translatesAutoresizingMaskIntoConstraints="NO" id="Sgs-gm-MN4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatbackground" translatesAutoresizingMaskIntoConstraints="NO" id="Sgs-gm-MN4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="OUB-Sb-1Dq">
-                                <rect key="frame" x="16" y="740" width="382" height="106"/>
+                                <rect key="frame" x="16" y="422" width="382" height="106"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGS-ii-EGo">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="44"/>
@@ -58,9 +58,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OUB-Sb-1Dq" secondAttribute="trailing" constant="16" id="Cug-tK-9tE"/>
                             <constraint firstItem="Sgs-gm-MN4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Vy5-EU-DnG"/>
                             <constraint firstItem="OUB-Sb-1Dq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="aEm-bI-RfT"/>
+                            <constraint firstItem="OUB-Sb-1Dq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="c15-Ke-mMZ"/>
                             <constraint firstItem="Sgs-gm-MN4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hbZ-fe-dal"/>
                             <constraint firstItem="Sgs-gm-MN4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="knl-IA-8jQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OUB-Sb-1Dq" secondAttribute="bottom" constant="16" id="rzu-e0-bnb"/>
+                            <constraint firstItem="OUB-Sb-1Dq" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rRw-Jw-16O"/>
                             <constraint firstAttribute="bottom" secondItem="Sgs-gm-MN4" secondAttribute="bottom" id="yMu-LV-2Dw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -82,7 +83,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buzz Chat" translatesAutoresizingMaskIntoConstraints="NO" id="st0-Pk-z64">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatbackground" translatesAutoresizingMaskIntoConstraints="NO" id="st0-Pk-z64">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogw-Fx-nkH">
@@ -178,22 +179,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Buzz Chat" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-91-t4c">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatbackground" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-91-t4c">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="82F-Po-FWX">
                                 <rect key="frame" x="0.0" y="88" width="414" height="730"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tvH-I4-PxY">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tvH-I4-PxY" id="axS-vq-heL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnn-4i-RzC">
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
@@ -282,6 +273,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Buzz Chat" width="1191" height="1684"/>
+        <image name="chatbackground" width="810" height="1440"/>
     </resources>
 </document>
